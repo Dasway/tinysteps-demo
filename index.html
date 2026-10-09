@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TinySteps ERP | Mokoo IT Development</title>
+<style>
+:root {
+  --brand: #6F55C9;
+  --brand-light: #F0ECFF;
+  --ink: #28243A;
+  --muted: #77758A;
+  --line: #ECEAF2;
+  --bg: #F7F6FB;
+  --white: #FFFFFF;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+header {
+  background: white;
+  border-bottom: 1px solid var(--line);
+  padding: 18px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.logo {
+  background: var(--brand);
+  color: white;
+  border-radius: 13px;
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  font-size: 21px;
+  font-weight: bold;
+}
+h1 { font-size: 19px; margin: 0 0 5px; }
+.subtitle { color: var(--muted); font-size: 12px; }
+.demo {
+  color: var(--brand);
+  background: var(--brand-light);
+  border-radius: 20px;
+  padding: 9px 13px;
+  font-size: 12px;
+  font-weight: bold;
+}
+main { max-width: 1250px; margin: auto; padding: 30px 5%; }
+.welcome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+h2 { font-size: 25px; margin: 0 0 8px; }
+p { color: var(--muted); margin: 0; line-height: 1.5; }
+.date { font-size: 13px; color: var(--muted); }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+  min-width: 0;
+  box-shadow: 0 3px 12px rgba(40,36,58,.025);
+}
+.kpi-label { font-size: 13px; color: var(--muted); }
+.kpi-value { font-size: 29px; font-weight: 750; margin: 13px 0 8px; }
+.kpi-note { font-size: 12px; color: #278568; }
+.icon {
+  width: 38px; height: 38px; border-radius: 12px;
+  background: var(--brand-light); color: var(--brand);
+  display: grid; place-items: center; font-size: 18px;
+  margin-bottom: 15px;
+}
+.section-title { font-size: 17px; margin: 0 0 18px; }
+.lower { margin-top: 20px; display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 16px; }
+.bar-row { margin: 17px 0; }
+.bar-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 8px; gap: 8px; }
+.track { height: 9px; background: #F0EEF5; border-radius: 10px; overflow: hidden; }
+.fill { height: 100%; border-radius: 10px; background: var(--brand); }
+.green { background: #36A987; }
+.orange { background: #E8A04B; }
+.status-row { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+.status-row:last-child { border-bottom: 0; }
+.pill { padding: 5px 9px; border-radius: 12px; background: #E8F7F0; color: #21845F; font-size: 11px; white-space: nowrap; }
+.pill.partial { background: #FFF3DF; color: #A96B12; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.action {
+  background: white; border: 1px solid var(--line);
+  padding: 12px 15px; border-radius: 10px;
+  font-size: 12px; color: var(--ink); font-weight: bold;
+}
+footer { text-align: center; padding: 25px 15px 35px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+footer strong { color: var(--brand); }
+@media (max-width: 850px) {
+  .grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .lower { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  header { padding: 14px 4%; }
+  main { padding: 24px 4%; }
+  .demo { font-size: 10px; }
+  h2 { font-size: 22px; }
+  .card { padding: 16px; }
+  .kpi-value { font-size: 25px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="logo">TS</div>
+    <div>
+      <h1>TinySteps ERP</h1>
+      <div class="subtitle">Preschool Management System</div>
+    </div>
+  </div>
+  <div class="demo">● PUBLIC DEMO PREVIEW</div>
+</header>
+
+<main>
+  <section class="welcome">
+    <div>
+      <h2>School Dashboard</h2>
+      <p>Welcome to your preschool management overview.</p>
+    </div>
+    <div class="date" id="today"></div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <div class="icon">♧</div>
+      <div class="kpi-label">Total Children</div>
+      <div class="kpi-value">124</div>
+      <div class="kpi-note">Enrolment overview</div>
+    </div>
+    <div class="card">
+      <div class="icon">✓</div>
+      <div class="kpi-label">Present Today</div>
+      <div class="kpi-value">108</div>
+      <div class="kpi-note">87% attendance</div>
+    </div>
+    <div class="card">
+      <div class="icon">▦</div>
+      <div class="kpi-label">Classes</div>
+      <div class="kpi-value">6</div>
+      <div class="kpi-note">Class group overview</div>
+    </div>
+    <div class="card">
+      <div class="icon">R</div>
+      <div class="kpi-label">Payments Received</div>
+      <div class="kpi-value">R24,850</div>
+      <div class="kpi-note">Illustrative demo amount</div>
+    </div>
+  </section>
+
+  <section class="lower">
+    <div class="card">
+      <h3 class="section-title">Attendance Overview</h3>
+      <div class="bar-row">
+        <div class="bar-label"><span>Present</span><strong>108</strong></div>
+        <div class="track"><div class="fill green" style="width:87%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label"><span>Absent</span><strong>12</strong></div>
+        <div class="track"><div class="fill orange" style="width:10%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label"><span>Late</span><strong>4</strong></div>
+        <div class="track"><div class="fill" style="width:4%"></div></div>
+      </div>
+      <p style="font-size:11px;margin-top:18px">Sample figures for demonstration only.</p>
+    </div>
+
+    <div class="card">
+      <h3 class="section-title">School Fees</h3>
+      <div class="status-row"><span>Paid</span><span class="pill">82 children</span></div>
+      <div class="status-row"><span>Partial</span><span class="pill partial">24 children</span></div>
+      <div class="status-row"><span>Unpaid</span><span class="pill partial">18 children</span></div>
+      <div style="margin-top:20px">
+        <div class="kpi-label">Outstanding fees</div>
+        <div class="kpi-value" style="font-size:24px">R18,400</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="section-title">TinySteps Features</h3>
+      <div class="status-row"><span>Child registration</span><span>✓</span></div>
+      <div class="status-row"><span>Guardian records</span><span>✓</span></div>
+      <div class="status-row"><span>Daily attendance</span><span>✓</span></div>
+      <div class="status-row"><span>Fee management</span><span>✓</span></div>
+      <div class="status-row"><span>Payment receipts</span><span>✓</span></div>
+      <div class="status-row"><span>Parent statements</span><span>✓</span></div>
+    </div>
+  </section>
+
+  <section class="card" style="margin-top:20px">
+    <h3 class="section-title">Explore the System</h3>
+    <p>This public page is a visual preview. The buttons below are illustrative and do not create or save school records.</p>
+    <div class="actions">
+      <div class="action">＋ Child Registration</div>
+      <div class="action">✓ Attendance</div>
+      <div class="action">R Fee Management</div>
+      <div class="action">▤ Payment Receipts</div>
+      <div class="action">▤ Parent Statements</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <strong>TinySteps ERP</strong><br>
+  Powered by Mokoo IT Development<br>
+  Public dashboard preview · All figures are sample data
+</footer>
+
+<script>
+document.getElementById("today").textContent =
+  new Date().toLocaleDateString("en-ZA", {
+    weekday: "long", year: "numeric", month: "long", day: "numeric"
+  });
+</script>
+</body>
+</html>
